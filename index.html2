@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyagePlus - Agence de Voyages</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles personnalisés */
+        :root {
+            --primary-color: #00a8cc;
+            --secondary-color: #005f73;
+            --accent-color: #ffa500;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar-brand i {
+            color: var(--accent-color);
+        }
+
+        .nav-link {
+            color: white !important;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* Section Héros */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200') center/cover;
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+            border: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .hero-section .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff8c00;
+        }
+
+        /* Section Destinations */
+        .destinations-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .destinations-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .destination-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .destination-card img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .destination-card .card-title {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .destination-card .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .destination-card .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Section Visites guidées */
+        .tours-section {
+            padding: 5rem 0;
+        }
+
+        .tours-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .accordion-button {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        .accordion-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .accordion-body a {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .accordion-body a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Contact */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .contact-form .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #ff8c00;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-plane-departure"></i> VoyagePlus
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#circuits">Circuits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Héros -->
+    <section class="hero-section" id="accueil">
+        <div class="container">
+            <h1>Découvrez le Monde avec VoyagePlus</h1>
+            <p>Vivez des expériences inoubliables aux quatre coins de la planète</p>
+            <button class="btn btn-lg">Explorer nos destinations</button>
+        </div>
+    </section>
+
+    <!-- Section Destinations -->
+    <section class="destinations-section" id="destinations">
+        <div class="container">
+            <h2>Nos Destinations Populaires</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card destination-card">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600" class="card-img-top" alt="Paris">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Paris, France</h5>
+                            <p class="card-text">La ville lumière vous attend avec ses monuments emblématiques, sa gastronomie raffinée et son charme incomparable. Visitez la Tour Eiffel, le Louvre et flânez sur les Champs-Élysées.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card destination-card">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600" class="card-img-top" alt="Seoul">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Séoul, Corée du Sud</h5>
+                            <p class="card-text">Plongez dans un mélange fascinant de tradition et de modernité. Découvrez les palais royaux, les temples bouddhistes et la vibrante culture K-pop dans cette métropole dynamique.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card destination-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" class="card-img-top" alt="Maldives">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Maldives</h5>
+                            <p class="card-text">Paradis tropical par excellence avec ses eaux cristallines, ses plages de sable blanc et ses luxueux bungalows sur pilotis. L'endroit rêvé pour une lune de miel ou des vacances relaxantes.</p>
+                            <a href="#" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Visites guidées (Accordéon) -->
+    <section class="tours-section" id="circuits">
+        <div class="container">
+            <h2>Nos Forfaits Circuits</h2>
+            <div class="accordion" id="toursAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tour1">
+                            <i class="fas fa-globe-europe me-2"></i> Circuit Européen - 15 jours
+                        </button>
+                    </h2>
+                    <div id="tour1" class="accordion-collapse collapse show" data-bs-parent="#toursAccordion">
+                        <div class="accordion-body">
+                            <strong>Prix: 2 450€ par personne</strong><br>
+                            Visitez 7 pays européens en 15 jours : France, Italie, Suisse, Allemagne, Autriche, République tchèque et Pays-Bas. Hébergement en hôtels 4 étoiles, petit-déjeuner inclus, guide francophone et transport en autocar de luxe.
+                            <br><br>
+                            <a href="#">Voir les détails complets →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tour2">
+                            <i class="fas fa-umbrella-beach me-2"></i> Séjour Balnéaire Caraïbes - 10 jours
+                        </button>
+                    </h2>
+                    <div id="tour2" class="accordion-collapse collapse" data-bs-parent="#toursAccordion">
+                        <div class="accordion-body">
+                            <strong>Prix: 1 890€ par personne</strong><br>
+                            Détente totale dans les Caraïbes avec hébergement en resort 5 étoiles tout inclus. Profitez des plages paradisiaques, activités nautiques, spa et restaurants gastronomiques. Vol direct inclus.
+                            <br><br>
+                            <a href="#">Voir les détails complets →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tour3">
+                            <i class="fas fa-mountain me-2"></i> Aventure Asiatique - 20 jours
+                        </button>
+                    </h2>
+                    <div id="tour3" class="accordion-collapse collapse" data-bs-parent="#toursAccordion">
+                        <div class="accordion-body">
+                            <strong>Prix: 3 200€ par personne</strong><br>
+                            Explorez la Thaïlande, le Vietnam, le Cambodge et le Laos. Découvrez temples anciens, marchés flottants, rizières en terrasses et cuisine locale authentique. Petit groupe de maximum 12 personnes.
+                            <br><br>
+                            <a href="#">Voir les détails complets →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tour4">
+                            <i class="fas fa-camera me-2"></i> Safari Africain - 12 jours
+                        </button>
+                    </h2>
+                    <div id="tour4" class="accordion-collapse collapse" data-bs-parent="#toursAccordion">
+                        <div class="accordion-body">
+                            <strong>Prix: 4 500€ par personne</strong><br>
+                            Safari exceptionnel au Kenya et en Tanzanie. Observation des Big Five, traversée du Serengeti, visite du cratère du Ngorongoro et séjour en lodges de luxe. Photographes professionnels à disposition.
+                            <br><br>
+                            <a href="#">Voir les détails complets →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Contactez-Nous</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nom complet</label>
+                        <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Adresse e-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="destination" class="form-label">Destination souhaitée</label>
+                        <select class="form-select" id="destination" required>
+                            <option value="">Choisissez une destination...</option>
+                            <option value="europe">Europe</option>
+                            <option value="asie">Asie</option>
+                            <option value="amerique">Amérique</option>
+                            <option value="afrique">Afrique</option>
+                            <option value="oceanie">Océanie</option>
+                            <option value="caraibes">Caraïbes</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Parlez-nous de votre projet de voyage..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn w-100">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 VoyagePlus - Agence de Voyages. Tous droits réservés.</p>
+            <div class="social-icons mt-3">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
